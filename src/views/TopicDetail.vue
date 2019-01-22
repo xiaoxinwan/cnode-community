@@ -2,20 +2,15 @@
   <div>
     <Header></Header>
     <div>
-      <Postlist></Postlist>
+      <Article></Article>
     </div>
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
 import Header from "@/components/Header.vue";
-import Postlist from "@/components/Postlist.vue";
-
+import Article from "@/components/Article.vue"  
 export default {
-  name: 'home',
-  components: {
-    Header,Postlist
-  }
+  name: 'TopicDetail',
+  components: {Header, Article}
 }
 </script>

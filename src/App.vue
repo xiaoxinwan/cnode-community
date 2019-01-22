@@ -1,17 +1,10 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <div>
-      <Postlist></Postlist>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import Header from "./components/Header.vue";
-import Postlist from "./components/Postlist.vue";
-export default {
-  components: { Header, Postlist }
-};
+export default {};
 </script>
 
 <style lang="scss">

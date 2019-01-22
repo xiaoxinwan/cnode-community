@@ -31,8 +31,10 @@
             <span>{{list | tabFormatter}}</span>
           </span>
           <!-- 标题 -->
-          <span class="topic_title">{{list.title}}</span>
-          <span class="topic_last_reply">{{list.last_reply_at | formatDate}}</span>
+          <router-link :to="{name:'topic_detail', params:{id: list.id}}">
+            <span class="topic_title">{{list.title}}</span>
+          </router-link>
+          <span class="topic_last_reply">{{list.last_reply_at | dateFormatter}}</span>
         </li>
       </ul>
     </div>
@@ -94,7 +96,6 @@ img {
 .topic_inner {
   padding-top: 15px;
 }
-
 .topic_bar {
   height: 20px;
   background: rgb(245, 244, 245);
@@ -118,7 +119,6 @@ img {
   padding: 3px;
   border-radius: 3px;
 }
-
 ul {
   list-style: none;
   width: 100%;
@@ -134,7 +134,6 @@ ul li:not(:first-child) {
   background-color: #fff;
   color: #333;
   border-top: 1px solid #f0f0f0;
-
   white-space: nowrap;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -146,7 +145,6 @@ ul li:last-child {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-
 .topic_count {
   width: 70px;
   display: inline-block;
@@ -158,7 +156,6 @@ ul li:last-child {
   color: #9e78c0;
   font-size: 14px;
 }
-
 .sign_good,
 .sign_top {
   background: #75b406;
@@ -189,7 +186,6 @@ ul li:last-child {
   float: right;
   margin: 6px 0;
 }
-
 a {
   text-decoration: none;
   color: black;
