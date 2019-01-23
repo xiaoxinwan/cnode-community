@@ -33,12 +33,15 @@
             <span>{{list | tabFormatter}}</span>
           </span>
           <!-- 标题 -->
-          <router-link :to="{name:'topic_detail', params:{id: list.id,loginname:list.author.loginname}}">
+          <router-link
+            :to="{name:'topic_detail', params:{id: list.id,loginname:list.author.loginname}}"
+          >
             <span class="topic_title">{{list.title}}</span>
           </router-link>
           <span class="topic_last_reply">{{list.last_reply_at | dateFormatter}}</span>
         </li>
       </ul>
+      <Pagination @handle="renderList"></Pagination>
     </div>
   </div>
 </template>
@@ -54,24 +57,33 @@ api: https://cnodejs.org/api/v1/topics
 
 <script>
 import url from "../module/api.js";
+import Pagination from "./Pagination.vue";
 export default {
   name: "Postlist",
+  components: {
+    Pagination
+  },
   data() {
     return {
       isLoading: false,
-      topiclists: []
+      topiclists: [],
+      listPage: 1
     };
   },
   beforeMount() {
     this.isLoading = true;
     this.getLists();
   },
+
+  mounted() {},
   methods: {
     getLists() {
       this.$axios
         .get(url.topicHome, {
-          page: 1,
-          limit: 20
+          params: {
+            page: this.listPage,
+            limit: 20
+          }
         })
         .then(res => {
           this.isLoading = false;
@@ -80,6 +92,10 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    renderList(value) {
+      this.listPage = value;
+      this.getLists();
     }
   }
 };

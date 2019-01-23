@@ -11,13 +11,15 @@
 // @ is an alias to /src
 import Header from "@/components/Header.vue";
 import Postlist from "@/components/Postlist.vue";
-
+import Pagination from "@/components/Pagination.vue";
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    Header,Postlist
+    Header,
+    Postlist,
+    Pagination
   }
-}
+};
 </script>
 <style scoped>
 [v-cloak] {

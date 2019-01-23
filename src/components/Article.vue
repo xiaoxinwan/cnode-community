@@ -47,6 +47,7 @@ export default {
     return {
       isLoading: false,
       post: {} // 当前页面的所有内容，所有属性
+
     };
   },
   beforeMount() {

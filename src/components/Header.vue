@@ -34,7 +34,6 @@ export default {
 .header {
   background-color: rgb(68, 68, 68);
   height: 50px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
