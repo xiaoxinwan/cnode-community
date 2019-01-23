@@ -33,7 +33,7 @@
             <span>{{list | tabFormatter}}</span>
           </span>
           <!-- 标题 -->
-          <router-link :to="{name:'topic_detail', params:{id: list.id}}">
+          <router-link :to="{name:'topic_detail', params:{id: list.id,loginname:list.author.loginname}}">
             <span class="topic_title">{{list.title}}</span>
           </router-link>
           <span class="topic_last_reply">{{list.last_reply_at | dateFormatter}}</span>

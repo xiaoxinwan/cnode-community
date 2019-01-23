@@ -102,13 +102,13 @@ img {
   color: #75b406;
 }
 .user {
+  width: 940px;
   background-color: rgb(221, 220, 221);
   padding-bottom: 15px;
   padding-top: 15px;
-  height: 100vh;
+
 }
 .userinfo {
-  max-width: 940px;
   margin: 0 auto;
   border-radius: 3px;
 }

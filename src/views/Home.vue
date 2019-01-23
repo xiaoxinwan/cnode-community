@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-cloak>
     <Header></Header>
     <div>
       <Postlist></Postlist>
@@ -19,3 +19,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+[v-cloak] {
+  display: none;
+}
+</style>
+

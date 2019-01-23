@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path:'/topic/:id',
+      path:'/topic/:id&name=:loginname',
       name: 'topic_detail',
       component: TopicDetail
     },
