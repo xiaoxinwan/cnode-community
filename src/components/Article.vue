@@ -10,7 +10,9 @@
         <div class="topic_title">{{post.title}}</div>
         <ul>
           <li>• 发布于{{post.create_at | dateFormatter('个') }}</li>
-          <li>• 作者 {{post.author.loginname}}</li>
+          <router-link :to="{name:'user', params:{loginname:post.author.loginname}}">
+            <li>• 作者 {{post.author.loginname}}</li>
+          </router-link>
           <li>• {{post.visit_count}}次浏览</li>
           <li>• 来自 {{post | tabFormatter}}</li>
         </ul>
@@ -19,12 +21,15 @@
       <div class="reply_content">
         <div class="reply_number">{{post.replies.length}} 回复</div>
         <div class="reply_item" v-for="(reply, index) in post.replies" :key="reply.id">
-          <img :src="reply.author.avatar_url" alt>
+          <router-link :to="{name:'user', params:{loginname:reply.author.loginname}}">
+            <img :src="reply.author.avatar_url" alt>
+          </router-link>
           <div class="reply_msg_container">
             <div class="author_container">
               <span class="author_name">{{reply.author.loginname}}</span>
               <span class="author_reply_time">{{index+1}}楼•{{post.create_at | dateFormatter('个')}}</span>
               <span class="author_self" v-if="post.author.loginname === reply.author.loginname">作者</span>
+              <span class="like" v-if="reply.ups.length>0">👍{{reply.ups.length}}</span>
             </div>
             <div class="reply_msg" v-html="reply.content"></div>
           </div>
@@ -34,6 +39,8 @@
   </div>
 </template>
 <script>
+import url from "../module/api.js";
+
 export default {
   name: "Article",
   data() {
@@ -49,7 +56,7 @@ export default {
   methods: {
     getArticleData() {
       this.$axios
-        .get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
+        .get(url.topicDetail + this.$route.params.id)
         .then(res => {
           if (res.data.success === true) {
             this.isLoading = false;
@@ -64,13 +71,11 @@ export default {
 };
 </script>
 <style>
-
-
 ul,
 li {
   list-style: none;
 }
-a{
+a {
   text-decoration: none;
 }
 .loading {
@@ -79,7 +84,8 @@ a{
 }
 .article {
   background-color: rgb(221, 220, 221);
-  word-wrap:break-word;
+  word-wrap: break-word;
+  padding-bottom: 15px;
 }
 .topic_container {
   padding-top: 15px;
@@ -122,11 +128,9 @@ a{
 .topic_content {
   border-top: 1px solid #e5e5e5;
   padding: 10px 20px;
-
 }
 
-
-.markdown-text img{
+.markdown-text img {
   width: 98%;
 }
 
@@ -155,6 +159,10 @@ a{
 .reply_msg_container {
   padding-left: 10px;
 }
+.author_container {
+  display: flex;
+  width: 100%;
+}
 .author_name {
   color: #666;
   font-size: 12px;
@@ -172,51 +180,55 @@ a{
   margin-left: 5px;
   padding: 1px 3px;
 }
+.like {
+  float: right;
+}
 .reply_msg {
   margin-bottom: 15px;
 }
 
 .markdown-text p {
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-    line-height: 2em;
-    margin: 1em 0
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  line-height: 2em;
+  margin: 1em 0;
 }
 
-.markdown-text>:last-child,.preview>:last-child,textarea#title {
-    margin-bottom: 1em
+.markdown-text > :last-child,
+.preview > :last-child,
+textarea#title {
+  margin-bottom: 1em;
 }
 
-.markdown-text>:first-child,.preview>:first-child {
-    margin-top: 0
+.markdown-text > :first-child,
+.preview > :first-child {
+  margin-top: 0;
 }
 
-.markdown-text ul{
+.markdown-text ul {
   list-style-type: disc;
-
 }
-.markdown-text  ul li {
-    font-size: 14px;
-    line-height: 2em;
-    display: list-item;
-    list-style-type: disc;
-    margin-left: 20px;
-
+.markdown-text ul li {
+  font-size: 14px;
+  line-height: 2em;
+  display: list-item;
+  list-style-type: disc;
+  margin-left: 20px;
 }
 
-.markdown-text li code,.markdown-text p code,.preview li code,.preview p code {
-    color: #000;
-    background-color: #fcfafa;
-    padding: 4px 6px
+.markdown-text li code,
+.markdown-text p code,
+.preview li code,
+.preview p code {
+  color: #000;
+  background-color: #fcfafa;
+  padding: 4px 6px;
 }
 
 .markdown-text img {
-    cursor: pointer
+  cursor: pointer;
 }
-
-
-
 </style>

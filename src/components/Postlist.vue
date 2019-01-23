@@ -18,7 +18,9 @@
         </li>
         <li v-for="list in topiclists" :key="list.id">
           <!-- 头像 -->
-          <img :src="list.author.avatar_url">
+          <router-link :to="{name:'user', params:{loginname:list.author.loginname}}">
+            <img :src="list.author.avatar_url">
+          </router-link>
           <!-- 回复/访问 -->
           <span class="topic_count">
             <span class="reply_count">{{list.reply_count}}</span>
@@ -51,6 +53,7 @@ api: https://cnodejs.org/api/v1/topics
 */
 
 <script>
+import url from "../module/api.js";
 export default {
   name: "Postlist",
   data() {
@@ -66,13 +69,16 @@ export default {
   methods: {
     getLists() {
       this.$axios
-        .get("https://cnodejs.org/api/v1/topics", {
+        .get(url.topicHome, {
           page: 1,
           limit: 20
         })
         .then(res => {
           this.isLoading = false;
           this.topiclists = res.data.data;
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   }
@@ -85,6 +91,7 @@ img {
 }
 .topic_list {
   background-color: rgb(221, 220, 221);
+  padding-bottom: 15px;
 }
 .topic_list img {
   width: 30px;
@@ -194,7 +201,7 @@ a:hover {
   text-decoration: underline;
 }
 .loading {
-    text-align: center;
-    padding-top: 300px;
-  }
+  text-align: center;
+  padding-top: 300px;
+}
 </style>

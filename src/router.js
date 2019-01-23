@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import TopicDetail from '@/views/TopicDetail.vue'
+import UserDetail from '@/views/UserDetail.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -15,6 +17,11 @@ export default new Router({
       path:'/topic/:id',
       name: 'topic_detail',
       component: TopicDetail
+    },
+    {
+      path:'/user/:loginname',
+      name: 'user',
+      component: UserDetail
     }
     // {
     //   path: '/about',
