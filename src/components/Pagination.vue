@@ -54,7 +54,6 @@ export default {
 </script>
 <style scoped>
  .pagination {
-    background: rgb(221, 220, 221);
     padding-top: 20px;
     padding-bottom: 100px;
     border-radius: 5px;

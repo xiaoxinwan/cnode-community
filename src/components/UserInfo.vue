@@ -106,11 +106,11 @@ img {
   color: #75b406;
 }
 .user {
-  background: rgb(221, 220, 221);
   padding-bottom: 15px;
   padding-top: 15px;
   width: 70%;
   margin: 0 auto;
+  height: 100vh;
 }
 .userinfo {
   border-radius: 3px;

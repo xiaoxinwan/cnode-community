@@ -25,7 +25,7 @@ export default {
   margin: 0;
 }
 .main{
-  background: #d8d7d8;
+  background-color: #d8d7d8;
   display: flex;
   justify-content: space-around;
 }

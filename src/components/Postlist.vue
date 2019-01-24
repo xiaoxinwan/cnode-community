@@ -106,8 +106,8 @@ img {
   height: 30px;
 }
 .topic_list {
-  background-color: rgb(221, 220, 221);
   padding-bottom: 15px;
+  width: 1095px;
 }
 .topic_list img {
   width: 30px;
