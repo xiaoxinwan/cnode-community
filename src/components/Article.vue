@@ -92,6 +92,7 @@ a {
   background-color: rgb(221, 220, 221);
   word-wrap: break-word;
   padding-bottom: 15px;
+  margin-left: 280px;
 }
 .topic_container {
   padding-top: 15px;

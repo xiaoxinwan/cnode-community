@@ -30,7 +30,6 @@
             </router-link>
 
             <!-- 帖子分类 -->
-            
             <!-- 标题 -->
             <router-link :to="{name:'topic_detail', params:{id: topic.id}}">
               <span class="topic_title">{{topic.title}}</span>
@@ -48,7 +47,6 @@
             </router-link>
 
             <!-- 帖子分类 -->
-            
             <!-- 标题 -->
             <router-link :to="{name:'topic_detail', params:{id: reply.id}}">
               <span class="topic_title">{{reply.title}}</span>
@@ -93,6 +91,12 @@ export default {
 };
 </script>
 <style scoped>
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
 img {
   width: 30px;
   height: 30px;
@@ -102,14 +106,13 @@ img {
   color: #75b406;
 }
 .user {
-  width: 940px;
-  background-color: rgb(221, 220, 221);
+  background: rgb(221, 220, 221);
   padding-bottom: 15px;
   padding-top: 15px;
-
+  width: 70%;
+  margin: 0 auto;
 }
 .userinfo {
-  margin: 0 auto;
   border-radius: 3px;
 }
 .userinfo section {
@@ -160,55 +163,42 @@ section .github img {
   color: #778087;
 }
 
-.recent_topic ,.recent_reply {
+.recent_topic,
+.recent_reply {
   background: #fff;
   margin-bottom: 15px;
   border-radius: 3px;
 }
-.recent_reply p, .recent_topic p {
+.recent_reply p,
+.recent_topic p {
   height: 40px;
   line-height: 40px;
   background: #f5f4f5;
   padding-left: 10px;
-  color: rgb(68,68,68)
+  color: rgb(68, 68, 68);
 }
-.recent_topic ul{
-  padding: 0 10px;
-}
-.recent_reply li ,.recent_topic li{
-  padding: 9px;
-  font-size: 16px;
-  font-family: "Helvetica Neue", "Helvetica Neue", "Luxi Sans", "DejaVu Sans",
-    Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
-  font-weight: 400;
-  background-color: #fff;
-  color: #333;
-  border-top: 1px solid #f0f0f0;
+
+.recent_reply li,
+.recent_topic li {
+  padding: 10px 10px;
   white-space: nowrap;
+  font-size: 16px;
   text-overflow: ellipsis;
-  vertical-align: top;
+  overflow: hidden;
+  line-height: 30px;
+  height: 30px;
+  vertical-align: middle;
+  border-top: 1px solid #e5e5e5;
 }
-.recent_reply li span, .recent_topic li span{
+.recent_reply li span,
+.recent_topic li span {
   padding-left: 10px;
 }
-.recent_reply a:visited , .recent_topic a:visited{
-  color: rgb(0, 136, 204)
+.recent_reply a:visited,
+.recent_topic a:visited {
+  color: rgb(0, 136, 204);
 }
 
-
-
-
-
-.sign_good,
-.sign_top {
-  background: #75b406;
-  color: #fff;
-  border-radius: 3px;
-  padding: 2px 4px;
-  font-size: 12px;
-  margin-right: 5px;
-  text-align: center;
-}
 .topic_item {
   border-radius: 3px;
   padding: 2px 4px;
@@ -227,6 +217,6 @@ section .github img {
   font-size: 12px;
   color: #778087;
   float: right;
-  margin: 6px 0;
+  margin: 6px 0px;
 }
 </style>

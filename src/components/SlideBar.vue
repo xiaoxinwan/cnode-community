@@ -86,6 +86,8 @@ export default {
   width: 328px;
   margin: 15px;
   display: block;
+  float: right;
+  margin-right: 280px;
 }
 .author,
 .author_topic,
